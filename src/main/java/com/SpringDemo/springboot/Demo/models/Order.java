@@ -6,6 +6,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,17 +24,16 @@ public class Order {
     public Order() {
     }
 
-
     @OneToMany()
     @JoinColumn(name = "ordersItemId")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<OrderItem>orderItems = new HashSet<>();
+    private Set<OrderItem> orderItems = new HashSet<>();
 
     @ManyToOne
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JoinColumn(name="userID")
+    @JoinColumn(name = "userID")
     private User user;
 
     @Override
