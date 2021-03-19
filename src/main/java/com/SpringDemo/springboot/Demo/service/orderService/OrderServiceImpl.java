@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> findAll() {
-        return orderRepository.findAll();
+        return orderRepository.findAllByOrderByIdAsc();
     }
 
     @Override
@@ -41,10 +41,15 @@ public class OrderServiceImpl implements OrderService {
         if (result.isPresent()) {
             theOrder = result.get();
         } else {
-            // we didn't find the employee
             throw new RuntimeException("Did not find order id - " + theId);
         }
 
+        return theOrder;
+    }
+
+    @Override
+    public Order deleteById(int theId) {
+        Order theOrder=null;
         return theOrder;
     }
 

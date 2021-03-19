@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -31,8 +32,7 @@ public class UserServiceImpl implements UserService {
 
         if (result.isPresent()) {
             theUser = result.get();
-        }
-        else {
+        } else {
             throw new RuntimeException("Did not find User id - " + theId);
         }
 
@@ -49,6 +49,10 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(theId);
     }
 
-}
+
+    }
+
+
+
 
 

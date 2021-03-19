@@ -13,7 +13,7 @@ public interface OrderService {
 
     public Order findById(int theId);
 
-
+public Order deleteById(int theId);
     public int save(Order theOrder);
 
 }
