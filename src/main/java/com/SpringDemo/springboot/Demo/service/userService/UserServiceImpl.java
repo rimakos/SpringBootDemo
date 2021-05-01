@@ -24,20 +24,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+
     @Override
     public User findById(int theId) {
-        Optional<User> result = userRepository.findById(theId);
-
-        User theUser = null;
-
-        if (result.isPresent()) {
-            theUser = result.get();
-        } else {
-            throw new RuntimeException("Did not find User id - " + theId);
-        }
-
-        return theUser;
+        return userRepository.findById(theId).orElse(null);
     }
+
 
     @Override
     public void save(User theUser) {

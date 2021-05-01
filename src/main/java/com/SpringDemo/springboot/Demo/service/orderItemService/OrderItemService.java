@@ -11,4 +11,7 @@ public interface OrderItemService {
     public OrderItem findById(int theId);
 
     public void save(OrderItem theOrderItem);
+
+    public String deleteById(int theId);
+
 }

@@ -33,17 +33,20 @@ public class OrderItemRestController {
 
         OrderItem theOrderItem = orderItemService.findById(userId);
 
-        if (theOrderItem == null) {
-            throw new RuntimeException("Order item id not found - " + userId);
-        }
-
         return theOrderItem;
     }
+
     @PostMapping("/order-items")
     public OrderItem addOrderItem(@RequestBody @Valid OrderItem theOrderItem) {
 
         orderItemService.save(theOrderItem);
 
         return theOrderItem;
+    }
+
+    @DeleteMapping("/order-items/delete/{id}")
+    public String deleteOrder(@PathVariable("id") int id) {
+        String result = orderItemService.deleteById(id);
+        return result;
     }
 }

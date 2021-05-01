@@ -20,6 +20,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
+    @Column(name = "userID")
+    private int userId;
 
     public Order() {
     }
@@ -33,7 +35,7 @@ public class Order {
     @ManyToOne(cascade = CascadeType.ALL)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JoinColumn(name = "userID")
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
     private User user;
 
     @Override

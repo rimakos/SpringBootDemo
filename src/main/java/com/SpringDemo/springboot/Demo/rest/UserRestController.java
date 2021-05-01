@@ -33,12 +33,7 @@ public class UserRestController {
 
         User theUser = userService.findById(userId);
 
-        if (theUser == null) {
-            throw new RuntimeException("User id not found - " + userId);
-        }
-
         return theUser;
-
 
     }
 
@@ -53,6 +48,7 @@ public class UserRestController {
 
         return theUser;
     }
+
     @DeleteMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable("id") int id) {
         String result = userService.deleteById(id);

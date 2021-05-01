@@ -34,17 +34,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order findById(int theId) {
-        Optional<Order> result = orderRepository.findById(theId);
 
-        Order theOrder = null;
-
-        if (result.isPresent()) {
-            theOrder = result.get();
-        } else {
-            throw new RuntimeException("Did not find order id - " + theId);
-        }
-
-        return theOrder;
+        return orderRepository.findById(theId).orElse(null);
     }
 
     @Override
@@ -61,7 +52,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public int save(Order theOrder) {
         Order newOrder = new Order();
-        newOrder.setUser(theOrder.getUser());
+        newOrder.setUserId(theOrder.getUser().getId());
         orderRepository.save(newOrder);
 
         for (OrderItem orderItem : theOrder.getOrderItems()) {

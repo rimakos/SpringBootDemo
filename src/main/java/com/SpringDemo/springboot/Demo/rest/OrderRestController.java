@@ -29,15 +29,11 @@ public class OrderRestController {
 
         Order theOrder = orderService.findById(userId);
 
-        if (theOrder == null) {
-            throw new RuntimeException("Order id not found - " + userId);
-        }
-
         return theOrder;
     }
 
     @PostMapping("/orders")
-    public int addOrder(@RequestBody @Valid Order theOrder) {
+    public int addOrder(@RequestBody Order theOrder) {
 
 
         return orderService.save(theOrder);

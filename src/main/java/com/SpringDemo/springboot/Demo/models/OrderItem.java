@@ -19,6 +19,8 @@ public class OrderItem {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private int ordersItemId;
 
+
+
     @NotBlank(message = "Name is mandatory")
     private String items;
 
