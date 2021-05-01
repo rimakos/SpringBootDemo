@@ -48,9 +48,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order deleteById(int theId) {
-        Order theOrder=null;
-        return theOrder;
+    public String deleteById(int theId) {
+        Optional<Order> order = orderRepository.findById(theId);
+        if (order.isPresent()) {
+            orderRepository.deleteById(theId);
+            return "The order with id " + theId + " is deleted";
+        } else {
+            return "The id " + theId + " you enter to delete does not exist";
+        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.SpringDemo.springboot.Demo.models;
 
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +16,7 @@ public class OrderItem {
     @Column(name = "ID")
     private int id;
 
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private int ordersItemId;
 
     @NotBlank(message = "Name is mandatory")

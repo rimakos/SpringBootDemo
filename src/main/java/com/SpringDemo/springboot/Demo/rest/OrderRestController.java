@@ -42,4 +42,11 @@ public class OrderRestController {
 
         return orderService.save(theOrder);
     }
+
+    @DeleteMapping("/orders/delete/{id}")
+    public String deleteOrder(@PathVariable("id") int id) {
+        String result = orderService.deleteById(id);
+        return result;
+    }
+
 }
