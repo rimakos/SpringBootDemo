@@ -45,8 +45,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(int theId) {
-        userRepository.deleteById(theId);
+    public String deleteById(int theId) {
+        Optional<User> user = userRepository.findById(theId);
+        if (user.isPresent()) {
+            userRepository.deleteById(theId);
+            return "The User with id " + theId + " is deleted";
+        } else {
+            return "The id " + theId + " you enter to delete does not exist";
+        }
     }
 
 

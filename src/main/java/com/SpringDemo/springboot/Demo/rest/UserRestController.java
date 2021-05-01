@@ -53,6 +53,11 @@ public class UserRestController {
 
         return theUser;
     }
+    @DeleteMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable("id") int id) {
+        String result = userService.deleteById(id);
+        return result;
+    }
 }
 
 

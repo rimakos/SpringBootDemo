@@ -5,6 +5,7 @@ import com.SpringDemo.springboot.Demo.service.orderService.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -36,7 +37,7 @@ public class OrderRestController {
     }
 
     @PostMapping("/orders")
-    public int addOrder(@RequestBody Order theOrder) {
+    public int addOrder(@RequestBody @Valid Order theOrder) {
 
 
         return orderService.save(theOrder);
